@@ -151,8 +151,6 @@ section {
   position: relative;
   overflow: hidden;
   width: 70px;
-  height: 55px;
-  float: right;
 }
 
 .nav-toggle:before {
