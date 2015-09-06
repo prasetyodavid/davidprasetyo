@@ -1,3 +1,15 @@
+@font-face {
+    font-family: 'OswaldRegular';
+    src: url('oswald/oswald-webfont.eot');
+    src: url('oswald/oswald-webfont.eot?#iefix') format('embedded-opentype'),
+         url('oswald/oswald-webfont.woff') format('woff'),
+         url('oswald/oswald-webfont.ttf') format('truetype'),
+         url('oswald/oswald-webfont.svg#OswaldRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 /* Reset */
 .dcsns ul, .dcsns li {
 	padding: 0; 
