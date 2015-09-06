@@ -1,9 +1,7 @@
 jQuery(document).ready(function($){
-
 	jQuery('#ticker1').rssfeed('https://queryfeed.net/tw?q=%40davithace',{
 		snippet: true
 	});
-
 });	
 
 
