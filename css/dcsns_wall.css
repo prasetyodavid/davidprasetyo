@@ -506,8 +506,9 @@
 
 
 /* fb */
-.stream li.dcsns-custom_facebook .section-thumb img {
-	max-width: 192px;
+.stream li.dcsns-custom_facebook .section-fb_thumb img {
+	padding-right: 25%;
+    padding-left: 25%;
 }
 .stream li.dcsns-custom_facebook .section-text img {
 	border: 1px solid #ddd;
