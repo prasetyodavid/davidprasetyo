@@ -1500,7 +1500,7 @@ jQuery(window).load(function(){
 		cache: true,
 		max: 'limit',
 		limit: 10,
-		iconPath: 'images/dcsns-dark/',
-		imagePath: 'images/dcsns-dark/'
+		iconPath: 'https://davithace.github.io/davidprasetyo/images/dcsns-dark/',
+		imagePath: 'https://davithace.github.io/davidprasetyo/images/dcsns-dark/'
 	});
 });
