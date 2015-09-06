@@ -188,7 +188,7 @@ function blogger_thumbs(json){
 			
 			// Add feed row
 			if (opts.linkredirect) feedLink = encodeURIComponent(feedLink);{
-			rowArray[rowIndex]['html'] = '<'+ opts.titletag +'><a href="'+ opts.linkredirect + feedLink +'" title="View details at '+ feeds.title +'">'+ entry.title +'</a></'+ opts.titletag +'>'
+				var the_title = '<'+ opts.titletag +'><a href="'+ opts.linkredirect + feedLink +'" title="View details">'+ entry.title +'</a></'+ opts.titletag +'>'
 			global_tweet_id[i] = /[^/]*$/.exec(opts.linkredirect + feedLink)[0];
 			}
 
@@ -204,12 +204,12 @@ function blogger_thumbs(json){
 				}
 
 				if (opts.linkcontent) {
-					content = '<a href="'+ opts.linkredirect + feedLink +'" title="View details at '+ feeds.title +'">'+ content +'</a>'
+					content = opts.linkredirect + feedLink
 				}
-				
 				rowArray[rowIndex]['html'] += '<p>'+ content +'</p>';
 
-				global_content[i] = rowArray[rowIndex]['html'];
+				global_content[i] = the_title + linkify(rowArray[rowIndex]['html']);
+				
 			}
 			
 			// Add any media
@@ -226,7 +226,7 @@ function blogger_thumbs(json){
 						global_media[i] = xmlUrl;
 						
 					}
-					rowArray[rowIndex]['html'] += '</ul></div>'
+					rowArray[rowIndex]['html'] += '</ul></div>';
 				}
 			}
 					
@@ -274,7 +274,7 @@ function blogger_thumbs(json){
 		//$(e).html(html);
 
 		 //Apply target to links
-		//$('a',e).attr('target',opts.linktarget);
+		$('a',e).attr('target',opts.linktarget);
 	};
 	
 	var _formatFilesize = function(bytes) {
@@ -953,11 +953,11 @@ function blogger_thumbs(json){
 								break;
 
 								case 'custom_twitter':
-								z1 = global_content[xi+1];
-								z2 = '<span class="section-share"><a href="https://twitter.com/intent/tweet?in_reply_to='+ global_tweet_id[xi+1] +'" class="share-reply"></a>' +
+								z =  global_content[xi+1] +
+									 '<span class="section-share">' + 
+									  '<a href="https://twitter.com/intent/tweet?in_reply_to='+ global_tweet_id[xi+1] +'" class="share-reply"></a>' +
 								 	  '<a href="https://twitter.com/intent/retweet?tweet_id='+ global_tweet_id[xi+1] +'" class="share-retweet"></a>' +
 								 	  '<a href="https://twitter.com/intent/favorite?tweet_id='+ global_tweet_id[xi+1] +'" class="share-favorite"></a></span>' ;
-								z = z1 + z2;
 								break;
 								
 								case 'custom_google':
@@ -1123,14 +1123,14 @@ function blogger_thumbs(json){
 
 	function linkify(text){
 		text = text.replace(
-			/((https?\:\/\/)|(www\.))(\S+)(\w{2,4})(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/gi,
+			/((https?\:\/\/)|(www\.)|(pic\.))(\S+)(\w{2,4})(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/gi,
 			function(url){
 				var full_url = !url.match('^https?:\/\/') ? 'http://' + url : url ;
 				return '<a href="' + full_url + '">' + url + '</a>';
 			}
 		);
 		text = text.replace(/(^|\s)@(\w+)/g, '$1@<a href="http://www.twitter.com/$2">$2</a>');
-		text = text.replace(/(^|\s)#(\w+)/g, '$1#<a href="http://twitter.com/search/%23$2">$2</a>');
+		//text = text.replace(/(^|\s)#(\w+)/g, '$1#<a href="http://twitter.com/search/%23$2">$2</a>');
 		return text;
 	}
 	
