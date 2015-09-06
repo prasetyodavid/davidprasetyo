@@ -1,5 +1,5 @@
- var numchars = 250;
- $(document).ready(function($){
+var numchars = 250;
+jQuery(document).ready(function($){
 
 	$('#ticker1').rssfeed('https://queryfeed.net/tw?q=%40davithace',{
 		snippet: true
