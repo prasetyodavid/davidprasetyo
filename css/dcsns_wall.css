@@ -33,7 +33,7 @@ a {
 a:hover {
 }
 h1, h2, h3, h4, h5, h6 {
-	font-family: 'Droid Sans',Arial,Verdana,sans-serif;
+	font-family: 'Droid Sans';
 	font-weight: normal;
 	padding-bottom: 12px;
 }
