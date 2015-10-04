@@ -21,7 +21,7 @@ imgr=new Array(); global_blog_thumb=new Array(); imgr[0]="http://2.bp.blogspot.c
 	var host = urlChunks[urlChunks.length - 7];
 	if (host == '2.bp.blogspot.com' || host == '3.bp.blogspot.com' || host == '4.bp.blogspot.com' || host == '1.bp.blogspot.com'){
 		global_blog_thumb[r] = 'http://'+host+'/'+urlChunks[urlChunks.length - 6]+'/'+urlChunks[urlChunks.length - 5]+'/'+
-						urlChunks[urlChunks.length - 4]+'/'+urlChunks[urlChunks.length - 3]+'/'+'s200'+'/'+urlChunks[urlChunks.length - 1];
+						urlChunks[urlChunks.length - 4]+'/'+urlChunks[urlChunks.length - 3]+'/'+'s100'+'/'+urlChunks[urlChunks.length - 1];
 	}else{
 		global_blog_thumb[r] = thumburl[r];}
   document.write(' href="'+relatedUrls[r]+'" onclick="feelingLucky()" target="_blank"><img class="related_img" src="'+global_blog_thumb[r]+'"/><br/><div id="related-title">'+relatedTitles[r]+'</div></a>');if(r<relatedTitles.length-1){r++}else{r=0}i++}document.write('</div>');relatedUrls.splice(0,relatedUrls.length);thumburl.splice(0,thumburl.length);relatedTitles.splice(0,relatedTitles.length)}
