@@ -1,3 +1,10 @@
+jQuery(document).ready(function($){
+	jQuery('#ticker1').rssfeed('https://queryfeed.net/tw?q=%40davithace',{
+		snippet: true
+	});
+});	
+
+
 var global_date = [];
 var global_media = [];
 var global_content = [];
@@ -188,7 +195,8 @@ function blogger_thumbs(json){
 			
 			// Add feed row
 			if (opts.linkredirect) feedLink = encodeURIComponent(feedLink);{
-			rowArray[rowIndex]['html'] = '<'+ opts.titletag +'><a href="'+ opts.linkredirect + feedLink +'" title="View details at '+ feeds.title +'">'+ entry.title +'</a></'+ opts.titletag +'>'
+			var ttitle = '<'+ opts.titletag +'><a href="'+ opts.linkredirect + feedLink +'" title="View details at '+ feeds.title +'">'+ entry.title +'</a></'+ opts.titletag +'>'
+			rowArray[rowIndex]['html'] ='';
 			global_tweet_id[i] = /[^/]*$/.exec(opts.linkredirect + feedLink)[0];
 			}
 
@@ -209,7 +217,7 @@ function blogger_thumbs(json){
 				
 				rowArray[rowIndex]['html'] += '<p>'+ content +'</p>';
 
-				global_content[i] = rowArray[rowIndex]['html'];
+				global_content[i] = ttitle + linkify(rowArray[rowIndex]['html']);
 			}
 			
 			// Add any media
@@ -977,10 +985,10 @@ function blogger_thumbs(json){
 								break;
 
 								case 'custom_path':
-								var path_link = /[^—]*$/.exec(item[o.text])[0];
+								var path_link = /[^/]*$/.exec(item[o.text])[0];
 								path_link = path_link.trim();
 								z1 = item[o.text];
-								z2 =  '<span class="section-user"><b><a href="https://'+path_link+'">DETAILS</a></b></span>';
+								z2 =  '<span class="section-user"><b><a href="https://path.com/p/'+path_link+'">DETAILS</a></b></span>';
 								z= z1+z2;
 								
 								break;
@@ -1024,6 +1032,20 @@ function blogger_thumbs(json){
 									y = ' <a href="'+q+'" class="thumb"><img align="middle" height="auto" width="100%" src="'+global_blog_thumb[xi]+'" alt="" style="border: 1px solid #ccc;"/></a>' ;
 									zz += y;
 									break;
+									
+									case 'fb_thumb':
+									var src = item.content.indexOf("img") >= 0 ? $('img',item.content).attr('src') : '' ;
+									if (q.indexOf('youtube.com/watch') > -1) {
+									var video_id = /[^=]*$/.exec(q)[0];
+										y =  '<div class="container">'+
+											'<iframe width="100%" height="315" src="https://www.youtube.com/embed/'+video_id+'" frameborder="0" allowfullscreen class="video">'+
+											'</iframe>'+
+											'</div>';
+									} else{
+										y = src ? ' <a href="'+q+'" class="thumb"><img height="auto" width="50%" src="'+src+'" alt="" style="border: 1px solid #ccc;"/></a>' : '' ;
+									}
+									zz += y;
+									break;
 
 									case 'thumb_insta':
 									var src = item.content.indexOf("img") >= 0 ? $('img',item.content).attr('src') : '' ;
@@ -1041,7 +1063,7 @@ function blogger_thumbs(json){
 
 									case 'thumb_enc':
 									var src = item.content.indexOf("img") >= 0 ? $('img',item.content).attr('src') : '' ;
-									y = src ? '<a href="'+q+'" class="thumb"><img height="auto" width="10%" src="'+src+'" alt="" /></a>' : '' ;
+									y = src ? '<a href="'+q+'" ><img height="auto" width="10%" src="'+src+'" /></a>' : '' ;
 									if(typeof global_media[xi] === 'undefined'){
 										yz = '';
 										y='';
@@ -1123,14 +1145,17 @@ function blogger_thumbs(json){
 
 	function linkify(text){
 		text = text.replace(
-			/((https?\:\/\/)|(www\.))(\S+)(\w{2,4})(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/gi,
+			/((https?\:\/\/)|(www\.)|(pic\.))(\S+)(\w{2,4})(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/gi,
 			function(url){
+				if( url.length >= 30){
+				url = url.substring(0, 30);
+				}
 				var full_url = !url.match('^https?:\/\/') ? 'http://' + url : url ;
 				return '<a href="' + full_url + '">' + url + '</a>';
 			}
 		);
 		text = text.replace(/(^|\s)@(\w+)/g, '$1@<a href="http://www.twitter.com/$2">$2</a>');
-		text = text.replace(/(^|\s)#(\w+)/g, '$1#<a href="http://twitter.com/search/%23$2">$2</a>');
+		//text = text.replace(/(^|\s)#(\w+)/g, '$1#<a href="http://twitter.com/search/%23$2">$2</a>');
 		return text;
 	}
 	
@@ -1408,5 +1433,72 @@ jQuery(window).load(function(){
 	});
 	jQuery('.dcsns-facebook .section-text a img').each(function(i){
 		if(jQuery(this).parent().attr('href').split('http').length < 2){jQuery(this).parent().attr('href','https://facebook.com'+jQuery(this).parent().attr('href'));}
+	});
+
+	jQuery('#social-stream').dcSocialStream({
+		feeds: {
+			custom_twitter: {
+				id: 'https://queryfeed.net/tw?q=%40davithace',
+				intro: 'Tweet',
+				out: 'intro,text,thumb_enc',
+				text: 'contentSnippet',
+				icon: 'twitter.png'
+			},
+			rss: {
+				id: 'http://www.davidprasetyo.com/feeds/posts/default?orderby=published',
+				intro: 'Posted',
+				out: 'intro,blogger_thumb,title,text,share',
+				text: 'contentSnippet',
+				icon: 'rss.png'
+			},
+			custom_facebook: {
+				id: 'http://fbrss.com/feed/6009f36b4453aff3508cd06c4615daeee8b15f0d.xml?me',
+				intro: 'Posted',
+				out: 'intro,fb_thumb,title,text,share',
+				text: 'contentSnippet',
+				icon: 'facebook.png'
+			},
+			custom_google: {
+				id: 'http://gplusrss.com/rss/feed/535ea2b438c297f5dfa7508ba13b7c385453031f101c4',
+				intro: 'Posted',
+				out: 'intro,thumb_gplus,title,text,share',
+				text: 'contentSnippet',
+				icon: 'google.png'
+			},
+
+			custom_instagram: {
+				id: 'http://instagrss-mgng.rhcloud.com/davithace',
+				intro: 'Posted',
+				out: 'intro,thumb_insta,title',
+				icon: 'instagram.png',
+			},
+
+			custom_youtube: {
+				id: 'https://www.youtube.com/feeds/videos.xml?user=davidprasetyo19',
+				intro: 'Uploaded',
+				out: 'intro,thumb,title,text',
+				icon: 'youtube.png'
+			},
+
+			custom_path: {
+				id: 'https://queryfeed.net/twitter?q=path.com+from%3Adavithace&geocode=',
+				intro: 'Updated',
+				out: 'intro,text',
+				icon: 'pinterest.png'
+			},
+		},
+		rotate: {
+			delay: 0
+		},
+		twitterId: 'davithace',
+		control: false,
+		filter: true,
+		wall: true,
+		center: true,
+		cache: true,
+		max: 'limit',
+		limit: 10,
+		iconPath: 'https://davithace.github.io/davidprasetyo/images/dcsns-dark/',
+		imagePath: 'https://davithace.github.io/davidprasetyo/images/dcsns-dark/'
 	});
 });
