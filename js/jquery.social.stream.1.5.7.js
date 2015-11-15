@@ -1,5 +1,5 @@
 jQuery(document).ready(function($){
-	jQuery('#ticker1').rssfeed('https://queryfeed.net/tw?q=%40davithace',{
+	jQuery('#ticker1').rssfeed('https://queryfeed.net/twitter?q=from%3Adavithace&geocode=&omit-direct=on&attach=on',{
 		snippet: true
 	});
 });	
@@ -563,7 +563,7 @@ function blogger_thumbs(json){
 				var x = '<div class="dcsns-toolbar">';
 				if(this.o.filter == true){
 					x += '<ul id="dcsns-filter" class="option-set filter">';
-					x += this.o.wall == true ? '<li><a href="#filter" data-group="dc-filter"  data-filter="*" class="selected link-all iso-active">all</a></li>' : '' ;
+					x += this.o.wall == true ? '<li id="cihuy"><a href="#filter" data-group="dc-filter"  data-filter="*" class="selected link-all iso-active">all</a></li>' : '' ;
 					var $f = $('.filter',el);
 					$.each(opt.feeds, function(k,v){
 						x += v.id != '' ? '<li class="active f-'+k+'"><a href="#filter" rel="'+k+'" data-group="dc-filter" data-filter=".dcsns-'+k+'"><img src="'+opt.imagePath+opt.feeds[k].icon+'" alt="" /></a></li>' : '' ;
@@ -1148,10 +1148,12 @@ function blogger_thumbs(json){
 			/((https?\:\/\/)|(www\.)|(pic\.))(\S+)(\w{2,4})(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/gi,
 			function(url){
 				if( url.length >= 30){
+				full_urlx = url;
 				url = url.substring(0, 30);
+				}else{
+					var full_urlx = !url.match('^https?:\/\/') ? 'http://' + url : url ;
 				}
-				var full_url = !url.match('^https?:\/\/') ? 'http://' + url : url ;
-				return '<a href="' + full_url + '">' + url + '</a>';
+				return '<a href="' + full_urlx + '">' + url + '</a>';
 			}
 		);
 		text = text.replace(/(^|\s)@(\w+)/g, '$1@<a href="http://www.twitter.com/$2">$2</a>');
@@ -1438,7 +1440,7 @@ jQuery(window).load(function(){
 	jQuery('#social-stream').dcSocialStream({
 		feeds: {
 			custom_twitter: {
-				id: 'https://queryfeed.net/tw?q=%40davithace',
+				id: 'https://queryfeed.net/twitter?q=from%3Adavithace&geocode=&omit-direct=on&attach=on',
 				intro: 'Tweet',
 				out: 'intro,text,thumb_enc',
 				text: 'contentSnippet',
