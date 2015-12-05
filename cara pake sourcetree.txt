@@ -1,0 +1,5 @@
+cara pake source tree.
+
+commit dulu , 
+trus push ,
+kalo error clone ulang aja..
