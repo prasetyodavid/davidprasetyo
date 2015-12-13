@@ -1473,7 +1473,7 @@ jQuery(window).load(function(){
 			custom_google: {
 				id: 'http://gplusrss.com/rss/feed/535ea2b438c297f5dfa7508ba13b7c385453031f101c4',
 				intro: 'Posted',
-				out: 'intro,thumb_gplus,title,text,share',
+				out: 'intro,thumb_gplus,text,share',
 				text: 'contentSnippet',
 				icon: 'google.png'
 			},
