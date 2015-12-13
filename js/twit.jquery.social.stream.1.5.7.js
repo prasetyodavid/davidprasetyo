@@ -9,30 +9,6 @@ var global_date = [];
 var global_media = [];
 var global_content = [];
 var global_tweet_id = [];
-var global_blog_thumb = [];
-
-function blogger_thumbs(json){
-	var numposts = 10;
-	for(var i=0;i<numposts;i++)
-		{var entry=json.feed.entry[i];var posttitle=entry.title.$t;var posturl;if(i==json.feed.entry.length)break;
-			for(var k=0;k<entry.link.length;k++){
-				if(entry.link[k].rel=='replies'&&entry.link[k].type=='text/html'){
-					var commenttext=entry.link[k].title;var commenturl=entry.link[k].href;}
-	if(entry.link[k].rel=='alternate'){posturl=entry.link[k].href;break;}}
-	var thumburl;
-	try{thumburl=entry.media$image.url;}
-	catch(error)
-	{s=entry.content.$t;a=s.indexOf("<img");b=s.indexOf("src=\"",a);c=s.indexOf("\"",b+5);d=s.substr(b+5,c-b-5);if((a!=-1)&&(b!=-1)&&(c!=-1)&&(d!="")){thumburl=d;}else thumburl='no-image.jpg';}
-
-	var urlChunks = thumburl.split('/');
-	var host = urlChunks[urlChunks.length - 7];
-	if (host == '2.bp.blogspot.com' || host == '3.bp.blogspot.com' || host == '4.bp.blogspot.com' || host == '1.bp.blogspot.com'){
-		global_blog_thumb[i] = 'http://'+host+'/'+urlChunks[urlChunks.length - 6]+'/'+urlChunks[urlChunks.length - 5]+'/'+
-						urlChunks[urlChunks.length - 4]+'/'+urlChunks[urlChunks.length - 3]+'/'+'s200'+'/'+urlChunks[urlChunks.length - 1];
-	}else{
-		global_blog_thumb[i] = thumburl;}
-	}
-}
 
 	
 (function($){
@@ -378,13 +354,14 @@ function blogger_thumbs(json){
 		
 			this.defaults = {
 				feeds: {
+
 					custom_twitter: {
 						id: '',
 						intro: 'Tweeted',
 						out: 'intro,title,text',
 						text: 'contentSnippet',						
 						icon: 'twitter.png'
-					},
+					}
 				},
 				remove: '',
 				twitterId: '',
@@ -420,6 +397,30 @@ function blogger_thumbs(json){
 
 			if(opt.height > 0 && opt.wall == false){
 				$c.css({height:opt.height+'px'});
+			}
+
+
+			if(this.o.filter == true || this.o.controls == true){
+				var x = '<div class="dcsns-toolbar">';
+				if(this.o.filter == true){
+					x += '<ul id="dcsns-filter" class="option-set filter">';
+					x += this.o.wall == true ? '<li><a id="social_all" href="#filter" data-group="dc-filter"  data-filter="*" class="selected link-all iso-active">all</a></li>' : '' ;
+					var $f = $('.filter',el);
+					$.each(opt.feeds, function(k,v){
+						x += v.id != '' ? '<li class="active f-'+k+'"><a href="#filter" rel="'+k+'" data-group="dc-filter" data-filter=".dcsns-'+k+'"><img src="'+opt.imagePath+opt.feeds[k].icon+'" alt="" /></a></li>' : '' ;
+					});
+					x += '</ul>';
+				}
+				if(this.o.controls == true && opt.wall == false){
+					var play = this.o.rotate.delay <= 0 ? '' : '<li><a href="#" class="play"></a></li>' ;
+					x += '<div class="controls"><ul>'+play+'<li><a href="#" class="prev"></a></li><li><a href="#" class="next"></a></li></ul></div>';
+				}
+				x += '</div>';
+				if(opt.wall == false){
+					$(el).append(x);
+				} else {
+					$(el).before(x);
+				}
 			}
 			
 			if(this.o.wall == true){
@@ -1071,4 +1072,16 @@ jQuery(window).load(function(){
 		iconPath: 'https://davithace.github.io/davidprasetyo/images/dcsns-dark/',
 		imagePath: 'https://davithace.github.io/davidprasetyo/images/dcsns-dark/'
 	});
+document.getElementById('social_all').click();
+});
+
+
+jQuery(window).load(function(){
+setTimeout(
+    function() {
+     jQuery('#social_all').click();
+      //alert("aw");
+    }, 5000);
+
+	
 });
