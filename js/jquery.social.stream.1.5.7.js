@@ -1515,3 +1515,8 @@ jQuery(window).load(function(){
 	});
 document.getElementById('social_all').click();
 });
+
+
+jQuery(window).load(function(){
+	document.getElementById('social_all').click();
+});
