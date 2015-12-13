@@ -563,7 +563,7 @@ function blogger_thumbs(json){
 				var x = '<div class="dcsns-toolbar">';
 				if(this.o.filter == true){
 					x += '<ul id="dcsns-filter" class="option-set filter">';
-					x += this.o.wall == true ? '<li id="cihuy"><a href="#filter" data-group="dc-filter"  data-filter="*" class="selected link-all iso-active">all</a></li>' : '' ;
+					x += this.o.wall == true ? '<a id="social_all" href="#filter" data-group="dc-filter"  data-filter="*" class="selected link-all iso-active">all</a>' : '' ;
 					var $f = $('.filter',el);
 					$.each(opt.feeds, function(k,v){
 						x += v.id != '' ? '<li class="active f-'+k+'"><a href="#filter" rel="'+k+'" data-group="dc-filter" data-filter=".dcsns-'+k+'"><img src="'+opt.imagePath+opt.feeds[k].icon+'" alt="" /></a></li>' : '' ;
@@ -1513,4 +1513,5 @@ jQuery(window).load(function(){
 		iconPath: 'https://davithace.github.io/davidprasetyo/images/dcsns-dark/',
 		imagePath: 'https://davithace.github.io/davidprasetyo/images/dcsns-dark/'
 	});
+document.getElementById('social_all').click();
 });
