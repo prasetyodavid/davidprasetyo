@@ -28,7 +28,7 @@ function blogger_thumbs(json){
 	var host = urlChunks[urlChunks.length - 7];
 	if (host == '2.bp.blogspot.com' || host == '3.bp.blogspot.com' || host == '4.bp.blogspot.com' || host == '1.bp.blogspot.com'){
 		global_blog_thumb[i] = 'http://'+host+'/'+urlChunks[urlChunks.length - 6]+'/'+urlChunks[urlChunks.length - 5]+'/'+
-						urlChunks[urlChunks.length - 4]+'/'+urlChunks[urlChunks.length - 3]+'/'+'s200'+'/'+urlChunks[urlChunks.length - 1];
+						urlChunks[urlChunks.length - 4]+'/'+urlChunks[urlChunks.length - 3]+'/'+'s150'+'/'+urlChunks[urlChunks.length - 1];
 	}else{
 		global_blog_thumb[i] = thumburl;}
 	}
@@ -1056,7 +1056,17 @@ function blogger_thumbs(json){
 
 									case 'thumb_gplus':
 									var src = item.content.indexOf("img") >= 0 ? $('img',item.content).attr('src') : '' ;
-									y = src ? '<a href="'+q+'" class="thumb"><img align="middle" height="auto" width="100%" src="'+src+'" alt="" style="border: 1px solid #ccc;"/></a>' : '' ;
+
+										var urlChunks = src.split('/');
+										var host = urlChunks[urlChunks.length - 7];
+										if (host == '2.bp.blogspot.com' || host == '3.bp.blogspot.com' || host == '4.bp.blogspot.com' || host == '1.bp.blogspot.com'){
+											gthumb = 'http://'+host+'/'+urlChunks[urlChunks.length - 6]+'/'+urlChunks[urlChunks.length - 5]+'/'+
+															urlChunks[urlChunks.length - 4]+'/'+urlChunks[urlChunks.length - 3]+'/'+'s150'+'/'+urlChunks[urlChunks.length - 1];
+										}else{
+											gthumb = src ;
+										}
+
+									y = src ? '<a href="'+q+'" class="thumb"><img align="middle" height="auto" width="100%" src="'+gthumb+'" alt="" style="border: 1px solid #ccc;"/></a>' : '' ;
 									zz += y;
 									break;
 
