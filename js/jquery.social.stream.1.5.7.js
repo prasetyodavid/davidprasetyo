@@ -947,10 +947,33 @@ function blogger_thumbs(json){
 					var xi = -1;
 					$.each(a, function(i,item){
 						if(i < n){
-							var html = [], q = item.link, u='<a href="'+href+'">'+id+'</a>', w='', x = '<a href="'+q+'">'+item.title+'</a>', y='', z='', zz='', m='', d = item.publishedDate, sq = q, st = item.title, s = '';
+							
+							var maxLength = 60;
+							var trimmedString = item.title.substr(0, maxLength);
+
+							switch(type)
+							{
+							case 'custom_facebook':
+							var thetitle = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(" ")))+'... <br></br>';
+							break;
+							
+							case 'custom_instagram':
+							var thetitle = '<br>'+trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(" ")))+'...';
+							break;
+
+							default:
+							var thetitle = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(" ")))+'...';
+							break;
+							}
+
+							var html = [], q = item.link, u='<a href="'+href+'">'+id+'</a>', w='', x = '<a href="'+q+'">'+thetitle+'</a>', y='', z='', zz='', m='', d = item.publishedDate, sq = q, st = item.title, s = '';
 							
 							switch(type)
 							{	
+								
+								case 'rss':
+								z = item[o.text];
+								break;
 								
 								case 'rss':
 								z = item[o.text];
