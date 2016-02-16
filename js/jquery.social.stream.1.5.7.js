@@ -957,7 +957,7 @@ function blogger_thumbs(json){
 							var thetitle = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(" ")))+'... <br></br>';
 							break;
 							
-							case 'custom_instagram':
+							case 'custom_instagram_old':
 							var thetitle = '<br>'+trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(" ")))+'...';
 							break;
 
@@ -966,8 +966,13 @@ function blogger_thumbs(json){
 							break;
 							}
 
-							var html = [], q = item.link, u='<a href="'+href+'">'+id+'</a>', w='', x = '<a href="'+q+'">'+thetitle+'</a>', y='', z='', zz='', m='', d = item.publishedDate, sq = q, st = item.title, s = '';
-							
+							if(type	=='custom_instagram	'){
+									var myRegex = /<img[^>]+src="(http:\/\/[^">]+)"/g;
+									var test = item.content;
+									myRegex.exec(test);
+							}else{
+									var html = [], q = item.link, u='<a href="'+href+'">'+id+'</a>', w='', x = '<a href="'+q+'">'+thetitle+'</a>', y='', z='', zz='', m='', d = item.publishedDate, sq = q, st = item.title, s = '';
+							}
 							switch(type)
 							{	
 								
@@ -996,7 +1001,7 @@ function blogger_thumbs(json){
 								break;
 
 								case 'custom_instagram':
-								z = item[o.text];
+								z = item.content	;
 								break;
 
 								case 'custom_youtube':
@@ -1071,7 +1076,8 @@ function blogger_thumbs(json){
 									break;
 
 									case 'thumb_insta':
-									var src = item.content.indexOf("img") >= 0 ? $('img',item.content).attr('src') : '' ;
+									//var src = item.content.indexOf("img") >= 1 ? $('img',item.content).attr('src').length : '' ;
+									var src = $('img',item.content).map(function() { return this.src; }).get();
 									y = src ? '<a href="'+q+'" class="thumb"><img align="middle" height="auto" width="100%" src="'+src+'" alt="" style="border: 1px solid #ccc;"/></a>' : '' ;
 									zz += y;
 									break;
@@ -1502,9 +1508,10 @@ jQuery(window).load(function(){
 			},
 
 			custom_instagram: {
-				id: 'http://instagrss-mgng.rhcloud.com/davithace',
+				id: 'http://widget.websta.me/rss/n/davithace',
 				intro: 'Posted',
-				out: 'intro,thumb_insta,title',
+				out: 'thumb_insta,text',
+				text: 'contentSnippet',
 				icon: 'instagram.png',
 			},
 
