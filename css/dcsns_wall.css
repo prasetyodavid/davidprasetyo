@@ -434,7 +434,7 @@ h6 {
 
 /* feeds network specific styles */
 .stream li.dcsns-rss .section-intro, .filter .f-rss a:hover {
-	background-color: #347149;
+	background-color: #2D4C60;
 }
 .stream li.dcsns-flickr .section-intro, .filter .f-flickr a:hover {
 	background-color: #f90784;

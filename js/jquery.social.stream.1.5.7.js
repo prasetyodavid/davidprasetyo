@@ -1493,7 +1493,7 @@ jQuery(window).load(function(){
 				icon: 'rss.png'
 			},
 			custom_facebook: {
-				id: 'http://fbrss.com/feed/6009f36b4453aff3508cd06c4615daeee8b15f0d.xml?me',
+				id: 'https://fbrss.com/feed/6009f36b4453aff3508cd06c4615daeee8b15f0d.xml?me',
 				intro: 'Posted',
 				out: 'intro,fb_thumb,title,text,share',
 				text: 'contentSnippet',
