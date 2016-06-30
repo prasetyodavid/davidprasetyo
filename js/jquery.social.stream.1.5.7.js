@@ -1002,7 +1002,6 @@ function blogger_thumbs(json){
 
 								case 'custom_instagram':
 								z = item.content	;
-								console.log(z);
 								break;
 
 								case 'custom_youtube':
@@ -1049,6 +1048,12 @@ function blogger_thumbs(json){
 									case 'title':
 									zz += x;
 									break;
+
+									case 'title_insta':
+									var tt = item.title;
+									zz += tt;
+									break;
+
 									case 'thumb':
 									//if(type == 'rss'){
 										var src = item.content.indexOf("img") >= 0 ? $('img',item.content).attr('src') : '' ;
@@ -1076,9 +1081,20 @@ function blogger_thumbs(json){
 									zz += y;
 									break;
 
+									/*
 									case 'thumb_insta':
 									//var src = item.content.indexOf("img") >= 1 ? $('img',item.content).attr('src').length : '' ;
 									var src = $('img',item.content).map(function() { return this.src; }).get();
+									y = src ? '<a href="'+q+'" class="thumb"><img align="middle" height="auto" width="100%" src="'+src+'" alt="" style="border: 1px solid #ccc;"/></a>' : '' ;
+									zz += y;
+									break;
+
+									*/
+
+
+									case 'thumb_insta':
+									//var src = item.content.indexOf("img") >= 1 ? $('img',item.content).attr('src').length : '' ;
+									var src = $(item.content).attr('src');
 									y = src ? '<a href="'+q+'" class="thumb"><img align="middle" height="auto" width="100%" src="'+src+'" alt="" style="border: 1px solid #ccc;"/></a>' : '' ;
 									zz += y;
 									break;
@@ -1511,7 +1527,7 @@ jQuery(window).load(function(){
 			custom_instagram: {
 				id: 'http://rssbridge.buddylist.co/?action=display&bridge=InstagramBridge&u=davithace&format=AtomFormat',
 				intro: 'Posted',
-				out: 'thumb_insta,text',
+				out: 'thumb_insta,title_insta',
 				text: 'contentSnippet',
 				icon: 'instagram.png',
 			},
