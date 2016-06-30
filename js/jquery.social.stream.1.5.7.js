@@ -1508,7 +1508,7 @@ jQuery(window).load(function(){
 			},
 
 			custom_instagram: {
-				id: 'http://widget.websta.me/rss/n/davithace',
+				id: 'http://rssbridge.buddylist.co/?action=display&bridge=InstagramBridge&u=davithace&format=AtomFormat',
 				intro: 'Posted',
 				out: 'thumb_insta,text',
 				text: 'contentSnippet',
