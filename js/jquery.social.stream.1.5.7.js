@@ -1002,6 +1002,7 @@ function blogger_thumbs(json){
 
 								case 'custom_instagram':
 								z = item.content	;
+								console.log(z);
 								break;
 
 								case 'custom_youtube':
