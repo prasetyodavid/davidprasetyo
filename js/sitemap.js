@@ -64,7 +64,7 @@ function displayToc2() {
     while (b < postTitle.length) {
         temp1 = postYearMonth[b];
         document.write("<p/>");
-        document.write('<p><a href="' + postYearMonth2[b] + '">' + temp1 + "</a></p><ul>");
+        document.write('<p><a href="' + postYearMonth2[b] + '"><b>' + temp1 + "</b></a></p><br><ul>");
         firsti = a;
         do {
             document.write("<li>");
@@ -73,7 +73,7 @@ function displayToc2() {
             a = a + 1
         } while (postYearMonth[a] == temp1);
         b = a;
-        document.write("</ul>");
+        document.write("</ul><br>");
         if (b > postTitle.length) {
             break
         }
