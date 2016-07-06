@@ -1,23 +1,23 @@
-$.getJSON("http://www.omdbapi.com/?i="+movieid+"&plot=full&r=json", function(result){
-		$("#actor").html(result.Actors);
-		$("#Actors").html(result.Actors);
-		$("#Awards").html(result.Awards);
-		$("#Country").html(result.Country);
-		$("#Director").html(result.Director)
-		$("#Genre").html(result.Genre);
-		$("#Language").html(result.Language);
-		$("#Metascore").html(result.Metascore);
-		$("#Plot").html(result.Plot);
-		$("#Poster").attr("src", result.Poster);
-		$("#Rated").html(result.Rated);
-		$("#Released").html(result.Released);
-		$("#Response").html(result.Response);
-		$("#Runtime").html(result.Runtime);
-		$("#Title").html(result.Title);
-		$("#Type").html(result.Type);
-		$("#Writer").html(result.Writer);
-		$("#Year").html(result.Year);
-		$("#imdbID").html(result.imdbID);
-		$("#imdbRating").html(result.imdbRating);
+jQuery.getJSON("http://www.omdbapi.com/?i="+movieid+"&plot=full&r=json", function(result){
+		jQuery("#actor").html(result.Actors);
+		jQuery("#Actors").html(result.Actors);
+		jQuery("#Awards").html(result.Awards);
+		jQuery("#Country").html(result.Country);
+		jQuery("#Director").html(result.Director)
+		jQuery("#Genre").html(result.Genre);
+		jQuery("#Language").html(result.Language);
+		jQuery("#Metascore").html(result.Metascore);
+		jQuery("#Plot").html(result.Plot);
+		jQuery("#Poster").attr("src", result.Poster);
+		jQuery("#Rated").html(result.Rated);
+		jQuery("#Released").html(result.Released);
+		jQuery("#Response").html(result.Response);
+		jQuery("#Runtime").html(result.Runtime);
+		jQuery("#Title").html(result.Title);
+		jQuery("#Type").html(result.Type);
+		jQuery("#Writer").html(result.Writer);
+		jQuery("#Year").html(result.Year);
+		jQuery("#imdbID").html(result.imdbID);
+		jQuery("#imdbRating").html(result.imdbRating);
 	
     });
