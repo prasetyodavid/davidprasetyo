@@ -132,8 +132,8 @@ h6 {
 }
 .stream li {
 	background-color: #FFFFFF;
-	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.5);
-	-moz-box-shadow: 0 1px 2px rgba(0,0,0,0.5);
+	/*-webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.5);*/
+	/*-moz-box-shadow: 0 1px 2px rgba(0,0,0,0.5);*/
     box-shadow: 0 1px 2px rgba(0,0,0,0.5);
     font-size: 11px;
     padding: 15px 0 35px 0;
@@ -211,6 +211,7 @@ h6 {
 	margin-bottom: 3px;
 	padding-left: 10px;
 	padding-right: 10px;
+	padding-top: 10px;
 }
 .stream li .section-text br {
 	display: block;
@@ -350,6 +351,10 @@ h6 {
 }
 .stream li .section-share a.share-linkedin:hover {
 	background-position: -16px -96px;
+}
+
+.section-thumb_enc > div > i {
+	padding-left: 10px;
 }
 /* Toolbar */
 .dcsns-toolbar {
