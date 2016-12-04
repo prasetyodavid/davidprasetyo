@@ -598,6 +598,8 @@ h6 {
 
 .section-title_insta{
 	padding: 15px;
+	font-size: 14px;
+	line-height: 1.45em;
 }
 /* rss */
 .stream li.dcsns-custom_twitter .section-thumb img {
