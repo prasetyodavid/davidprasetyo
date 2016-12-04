@@ -145,7 +145,8 @@ h6 {
 }
 .stream li .inner {
 	overflow: hidden;
-	padding: 0 15px;
+	/*padding: 0 15px;*/
+	padding: 0 0px;
 }
 .stream li .icon {
 	position: absolute;
@@ -591,6 +592,9 @@ h6 {
 	max-width: 192px;
 }
 
+.thumb > img{
+	width: 100%;
+}
 
 /* fb */
 .stream li.dcsns-custom_facebook .section-fb_thumb img {
