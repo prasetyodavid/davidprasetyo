@@ -170,6 +170,9 @@ h6 {
 	clear: both;
 }
 
+.section-text > h4 > a {
+	display: none;
+}
 /* Content blocks */
 
 .stream li .section-intro a {
@@ -181,6 +184,8 @@ h6 {
 	display: block;
 	font-weight: bold;
 	margin-bottom: 3px;
+	padding-left: 10px;
+	padding-right: 10px;
 }
 .stream li .section-title a {
 	color: #555;
@@ -204,6 +209,8 @@ h6 {
 .stream li .section-text {
 	display: block;
 	margin-bottom: 3px;
+	padding-left: 10px;
+	padding-right: 10px;
 }
 .stream li .section-text br {
 	display: block;
