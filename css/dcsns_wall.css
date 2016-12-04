@@ -596,7 +596,9 @@ h6 {
 	max-width: 192px;
 }
 
-
+.section-title_insta{
+	padding: 15px;
+}
 /* rss */
 .stream li.dcsns-custom_twitter .section-thumb img {
 	max-width: 192px;
