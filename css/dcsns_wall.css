@@ -409,10 +409,15 @@ h6 {
 	float: left;
 	/*background: #777;*/
 	height: 28px;
+	font-size: 23px;
+}
+
+.dcsns-toolbar .filter li a:hover{
+	background: #788a95;
 }
 .dcsns-toolbar .filter li img {
 	margin: 0;
-	height: 24px;
+	/*height: 24px;*/
 }
 /* Controls */
 .dcsns .controls {
