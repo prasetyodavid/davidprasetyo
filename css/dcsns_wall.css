@@ -372,8 +372,18 @@ h6 {
 #wall {
 	padding-top: 15px;
 }
+
+#ticker1.rssFeed{
+    height: 50px;
+}
 #wall .dcsns-toolbar {
-	margin-bottom: 25px;
+    margin-bottom: 25px;
+    position: fixed;
+    z-index: 30;
+    padding: 10px;
+    /* width: inherit; */
+    margin-top: -65px;
+    background: #2d4c60;
 }
 .dcsns-toolbar .filter {
 	padding: 0;
@@ -397,7 +407,7 @@ h6 {
 	margin: 0 1px 1px 0;
 	display: block;
 	float: left;
-	background: #777;
+	/*background: #777;*/
 	height: 28px;
 }
 .dcsns-toolbar .filter li img {
