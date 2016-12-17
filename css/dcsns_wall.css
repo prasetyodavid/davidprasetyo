@@ -126,6 +126,7 @@ h6 {
 .stream p {
 	margin: 0;
 	padding: 0;
+	text-align: center;
 }
 .stream li a {
 	color: #2DB6E8;
@@ -598,6 +599,7 @@ h6 {
 
 .section-title_insta{
 	padding: 15px;
+	display: inline-block;
 	font-size: 14px;
 	line-height: 1.45em;
 }
@@ -618,8 +620,9 @@ h6 {
 
 /* fb */
 .stream li.dcsns-custom_facebook .section-fb_thumb img {
-	padding-right: 25%;
-    padding-left: 25%;
+ /* padding-right: 25%;
+    padding-left: 25%; */
+  transform: scale(0.85);
 }
 .stream li.dcsns-custom_facebook .section-text img {
 	border: 1px solid #ddd;
