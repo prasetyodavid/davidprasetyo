@@ -76,7 +76,7 @@ function I() {
                 B = C.substring(C.indexOf("#PageNo=") + 8, C.length);
             else
                 B = 1;
-            document.write('<script src="' + G + 'feeds/posts/summary?max-results=1&alt=json-in-script&callback=hitungtotaldata">\x3c/script>')
+           document.head.appendChild('<script src="' + G + 'feeds/posts/summary?max-results=1&alt=json-in-script&callback=hitungtotaldata">\x3c/script>')
         } else {
             D = "label";
             if (a.indexOf("&max-results=") == -1)
@@ -85,7 +85,7 @@ function I() {
                 B = C.substring(C.indexOf("#PageNo=") + 8, C.length);
             else
                 B = 1;
-            document.write('<script src="' + G + "feeds/posts/summary/-/" + F + '?alt=json-in-script&callback=hitungtotaldata&max-results=1" >\x3c/script>')
+            document.head.appendChild('<script src="' + G + "feeds/posts/summary/-/" + F + '?alt=json-in-script&callback=hitungtotaldata&max-results=1" >\x3c/script>')
         }
 }
 function redirectpage(a) {
