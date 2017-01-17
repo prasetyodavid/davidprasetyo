@@ -1,11 +1,4 @@
 
-jQuery(document).ready(function($){
-	jQuery('#ticker1').rssfeed('https://queryfeed.net/twitter?q=from%3Adavithace&geocode=&omit-direct=on&attach=on',{
-		snippet: true
-	});
-});	
-
-
 var global_date = [];
 var global_media = [];
 var global_content = [];
@@ -1563,6 +1556,15 @@ jQuery(window).load(function(){
 	});
 document.getElementById('social_all').click();
 });
+
+
+
+jQuery(document).ready(function($){
+	jQuery('#ticker1').rssfeed('https://queryfeed.net/twitter?q=from%3Adavithace&geocode=&omit-direct=on&attach=on',{
+		snippet: true
+	});
+});	
+
 
 
 jQuery(window).load(function(){
