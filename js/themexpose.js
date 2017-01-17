@@ -77,7 +77,7 @@ function I() {
             else
                 B = 1;
           
-            var script = document.createElement(&#39;script&#39;);
+            var script = document.createElement('script');
             script.src = G + 'feeds/posts/summary?max-results=1&alt=json-in-script&callback=hitungtotaldata';
             document.head.appendChild(script)
         } else {
@@ -88,7 +88,7 @@ function I() {
                 B = C.substring(C.indexOf("#PageNo=") + 8, C.length);
             else
                 B = 1;
-          var script = document.createElement(&#39;script&#39;);
+          var script = document.createElement('script');
            script.src = G  + "feeds/posts/summary/-/" + F + '?alt=json-in-script&callback=hitungtotaldata&max-results=1';
             document.head.appendChild(script)
          }
