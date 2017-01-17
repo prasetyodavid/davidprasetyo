@@ -5,6 +5,8 @@ var global_content = [];
 var global_tweet_id = [];
 var global_blog_thumb = [];
 
+
+jQuery(document).ready(function($){
 function blogger_thumbs(json){
 	var numposts = 10;
 	for(var i=0;i<numposts;i++)
@@ -27,6 +29,7 @@ function blogger_thumbs(json){
 		global_blog_thumb[i] = thumburl;}
 	}
 }
+});	
 
 	
 (function($){
