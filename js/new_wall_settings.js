@@ -1,5 +1,5 @@
     $(document).ready(function(){
-        $('.social-feed-container').socialfeed({
+        jQuery('.social-feed-container').socialfeed({
 	
 
 
