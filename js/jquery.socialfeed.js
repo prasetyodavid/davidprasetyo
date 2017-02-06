@@ -13,7 +13,7 @@ if (typeof Object.create !== 'function') {
 
         var defaults = {
             plugin_folder: '', // a folder in which the plugin is located (with a slash in the end)
-            template: 'new_wall_template.html', // a path to the template file
+            template: 'http://davithace.github.io/davidprasetyo/new_wall_template.html', // a path to the template file
             show_media: false, // show images of attachments if available
             media_min_width: 300,
             length: 500, // maximum length of post message shown
