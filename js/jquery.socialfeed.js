@@ -6,6 +6,7 @@ if (typeof Object.create !== 'function') {
     };
 }
 
+
 (function($, window, document, undefined) {
     $.fn.socialfeed = function(_options) {
 
