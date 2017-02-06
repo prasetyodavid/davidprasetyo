@@ -8,26 +8,6 @@ function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.const
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-/**
- * A Twitter library in JavaScript
- *
- * @package   codebird
- * @version   3.0.0-dev
- * @author    Jublo Solutions <support@jublo.net>
- * @copyright 2010-2016 Jublo Solutions <support@jublo.net>
- * @license   http://opensource.org/licenses/GPL-3.0 GNU Public License 3.0
- * @link      https://github.com/jublonet/codebird-php
- */
-
-/* global window,
-      document,
-      navigator,
-      Ti,
-      ActiveXObject,
-      module,
-      define,
-      require */
-
 (function () {
   /**
    * A Twitter library in JavaScript
