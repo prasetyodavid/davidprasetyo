@@ -6,7 +6,6 @@ if (typeof Object.create !== 'function') {
     };
 }
 
-
 (function($, window, document, undefined) {
     $.fn.socialfeed = function(_options) {
 
@@ -450,7 +449,19 @@ if (typeof Object.create !== 'function') {
                                 $.each(element.object.attachments, function() {
                                     var image = '';
                                     if (this.fullImage) {
-                                        image = this.fullImage.url;
+                                            image = this.fullImage.url;
+                                            var urlChunks = image.split('/');
+                                            var host = urlChunks[urlChunks.length - 7];
+                                            if (host == '2.bp.blogspot.com' || host == '3.bp.blogspot.com' || host == '4.bp.blogspot.com' || host == '1.bp.blogspot.com'){
+                                                image = 'https://'+host+'/'+urlChunks[urlChunks.length - 6]+'/'+urlChunks[urlChunks.length - 5]+'/'+
+                                                                urlChunks[urlChunks.length - 4]+'/'+urlChunks[urlChunks.length - 3]+'/'+'s320'+'/'+urlChunks[urlChunks.length - 1];
+                                            }
+
+                                            if (host == 'lh1.googleusercontent.comm' || host == 'lh2.googleusercontent.com' || host == 'lh3.googleusercontent.com' || host == 'lh4.googleusercontent.com'){
+                                                image = 'https://'+host+'/'+urlChunks[urlChunks.length - 6]+'/'+urlChunks[urlChunks.length - 5]+'/'+
+                                                                urlChunks[urlChunks.length - 4]+'/'+urlChunks[urlChunks.length - 3]+'/'+'w320'+'/'+urlChunks[urlChunks.length - 1];
+                                            }
+
                                     } else {
                                         if (this.objectType === 'album') {
                                             if (this.thumbnails && this.thumbnails.length > 0) {
@@ -547,7 +558,7 @@ if (typeof Object.create !== 'function') {
                         post.description = '';
                         post.link = element.link;
                         if (options.show_media) {
-                            post.attachment = '<img class="attachment" src="' + element.images.standard_resolution.url + '' + '" />';
+                            post.attachment = '<img class="attachment" src="' + element.images.low_resolution.url + '' + '" />';
                         }
                         return post;
                     }
@@ -689,7 +700,7 @@ if (typeof Object.create !== 'function') {
                         if (options.show_media) {
                             if (element['media$thumbnail']) {
                                 var img = element['media$thumbnail']['url'] ;
-                                img = img.replace('s72-c', 's400');
+                                img = img.replace('s72-c', 's320');
                                 post.attachment = '<img class="attachment" src="' + img + '" />';
                             }
                         }
@@ -840,7 +851,7 @@ if (typeof Object.create !== 'function') {
                             item = element.entry;
                         }
                         var post = {};
-
+                        console.log(item);
                         post.id = '"' + item.id + '"';
                         post.dt_create= moment(item.published, 'YYYY-MM-DDTHH:mm:ssZ', 'en');
 
@@ -857,8 +868,13 @@ if (typeof Object.create !== 'function') {
                         }
                         post.social_network = 'custom_facebook';
                         post.link = item.link.href;
-                        if (options.show_media && item.thumbnail !== undefined ) {
-                            post.attachment = '<img class="attachment" src="' + item.thumbnail.url + '" />';
+                        
+                        var str = item.summary.content;
+
+                        var firstimg = $(str).find('img:first').attr('src');
+
+                        if (firstimg) {
+                            post.attachment = '<img class="attachment" src="' + firstimg + '" />';
                         }
 
 
