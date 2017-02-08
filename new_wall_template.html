@@ -1,7 +1,7 @@
 <div class="item {{=it.social_network}} {{=it.social_network}} {{? !it.moderation_passed}}hidden{{?}}" dt-create="{{=it.dt_create}}" social-feed-id = "{{=it.id}}" data-cat="{{=it.social_network}}">
- <a href="{{=it.link}}" class="text-title">
-    {{=it.attachment}} <br>
+    <a target="_blank" href="{{=it.link}}"> {{=it.attachment}} </a> <br>
     <span class="text-category">{{=it.text}} </span> <br>
-    <i style="display: none;">{{=it.author_name}}</i> {{=it.social_network}} | {{=it.time_ago}}
-   </a>
+    <a target="_blank" href="{{=it.link}}" class="text-title"> Read More.. </a><br>
+    <i style="display: none;">{{=it.author_name}}</i> 
+    <div class="text-time"><div class="text-icon {{=it.social_network}}"> </div> <div class="text">{{=it.time_ago}}</div></div>
 </div>
