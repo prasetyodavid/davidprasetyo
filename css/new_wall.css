@@ -58,6 +58,24 @@ img, iframe {
     transition: all .3s ease-in-out;
 }
 
+.item.custom_facebook.custom_facebook >a > img{
+    width: 35%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.item.custom_facebook.custom_facebook > br{
+    display: none;
+}
+
+.item.custom_facebook.custom_facebook > .text-category{
+    width: 60%;
+    display: inline-block;
+    margin-left: 2%;
+}
+
+
+
 .title, .footer {
 text-align: center;
 }
