@@ -5,7 +5,7 @@ imgr[0] = "http://2.bp.blogspot.com/-ex3V86fj4dQ/UrCQQa4cLsI/AAAAAAAAFdA/j2FCTmG
 showRandomImg = true;
 aBold = true;
 summaryPost = 400;
-summaryTitle = 20;
+summaryTitle = 30;
 numposts1 = 12;
 numposts2 = 4;
 
