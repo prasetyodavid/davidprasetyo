@@ -176,7 +176,7 @@ function printRelatedLabels_thumbs() {
     if (relatedTitles.length > 0) document.write('<h2>' + relatedpoststitle + '</h2>');
     document.write('<div style="clear: both;"/>');
 
-    while (i < relatedTitles.length && i < 20 && i < maxresults) {
+    while (i < relatedTitles.length && i < 30 && i < maxresults) {
         document.write('<a style="text-decoration:none;margin:0 4px 10px 0;float:left;');
         if (i != 0) document.write('"');
         else document.write('"');
@@ -204,46 +204,5 @@ function printRelatedLabels_thumbs() {
     relatedTitles.splice(0, relatedTitles.length)
 }
 
-function printSpecialLabels_thumbs() {
 
-    for (var i = 0; i < relatedUrls.length; i++) {
-        if ((relatedUrls[i] == currentposturl) || (!(relatedTitles[i]))) {
-            relatedUrls.splice(i, 1);
-            relatedTitles.splice(i, 1);
-            thumburl.splice(i, 1);
-            i--
-        }
-    }
-    var r = Math.floor((relatedTitles.length - 1) * Math.random());
-    var i = 0;
-    if (relatedTitles.length > 0) document.write('<h2>' + relatedpoststitle + '</h2>');
-    document.write('<div style="clear: both;"/>');
-
-    while (i < relatedTitles.length && i < 20 && i < maxresults) {
-        document.write('<a style="text-decoration:none;margin:0 4px 10px 0;float:left;');
-        if (i != 0) document.write('"');
-        else document.write('"');
-
-
-        var urlChunks = thumburl[r].split('/');
-        var host = urlChunks[urlChunks.length - 7];
-        if (host == '2.bp.blogspot.com' || host == '3.bp.blogspot.com' || host == '4.bp.blogspot.com' || host == '1.bp.blogspot.com') {
-            global_blog_thumb[r] = 'http://' + host + '/' + urlChunks[urlChunks.length - 6] + '/' + urlChunks[urlChunks.length - 5] + '/' +
-                urlChunks[urlChunks.length - 4] + '/' + urlChunks[urlChunks.length - 3] + '/' + 's100' + '/' + urlChunks[urlChunks.length - 1];
-        } else {
-            global_blog_thumb[r] = thumburl[r];
-        }
-        document.write(' href="' + relatedUrls[r] + '" onclick="feelingLucky()" target="_blank"><img class="related_img" src="' + global_blog_thumb[r] + '"/><br/><div id="related-title">' + relatedTitles[r] + '</div></a>');
-        if (r < relatedTitles.length - 1) {
-            r++
-        } else {
-            r = 0
-        }
-        i++
-    }
-    document.write('</div>');
-    relatedUrls.splice(0, relatedUrls.length);
-    thumburl.splice(0, thumburl.length);
-    relatedTitles.splice(0, relatedTitles.length)
-}
 //]]>
