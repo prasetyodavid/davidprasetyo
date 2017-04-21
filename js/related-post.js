@@ -177,7 +177,7 @@ function printRelatedLabels_thumbs() {
     document.write('<div style="clear: both;"/>');
 
     while (i < relatedTitles.length && i < 30 && i < maxresults) {
-        document.write('<a title="'+ relatedTitles[i] +'" style="text-decoration:none;margin:0 4px 10px 0;float:left;');
+        document.write('<a title="'+ relatedTitles[relatedTitlesNum] +'" style="text-decoration:none;margin:0 4px 10px 0;float:left;');
         if (i != 0) document.write('"');
         else document.write('"');
 
