@@ -100,7 +100,7 @@ function related_results_labels_thumbs(json) {
                 thumburl[relatedTitlesNum] = d
             } else thumburl[relatedTitlesNum] = 'http://2.bp.blogspot.com/-ex3V86fj4dQ/UrCQQa4cLsI/AAAAAAAAFdA/j2FCTmGOrog/s1600/no-thumbnail.png'
         }
-        if (relatedTitles[relatedTitlesNum].length > 35) relatedTitles[relatedTitlesNum] = relatedTitles[relatedTitlesNum].substring(0, 35) + "...";
+        //if (relatedTitles[relatedTitlesNum].length > 35) relatedTitles[relatedTitlesNum] = relatedTitles[relatedTitlesNum].substring(0, 35) + "...";
         for (var k = 0; k < entry.link.length; k++) {
             if (entry.link[k].rel == 'alternate') {
                 relatedUrls[relatedTitlesNum] = entry.link[k].href;
@@ -177,7 +177,7 @@ function printRelatedLabels_thumbs() {
     document.write('<div style="clear: both;"/>');
 
     while (i < relatedTitles.length && i < 30 && i < maxresults) {
-        document.write('<a title="'+ relatedTitles[relatedTitlesNum] +'" style="text-decoration:none;margin:0 4px 10px 0;float:left;');
+        document.write('<a style="text-decoration:none;margin:0 4px 10px 0;float:left;');
         if (i != 0) document.write('"');
         else document.write('"');
 
