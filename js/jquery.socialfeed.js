@@ -663,11 +663,11 @@ if (typeof Object.create !== 'function') {
                     switch (account[0]) {
                         case '@':
                             var username = account.substr(1);
-                            url = 'http://' + username + '/feeds/posts/default?alt=json-in-script&callback=?';
+                            url = 'https://' + username + '/feeds/posts/default?alt=json-in-script&callback=?';
                             request(url, getPosts);
                             break;
                         default:
-                            url = 'http://' + account + '/feeds/posts/default?alt=json-in-script&callback=?';
+                            url = 'https://' + account + '/feeds/posts/default?alt=json-in-script&callback=?';
                             Utility.request(url, Feed.blogspot.utility.getPosts);
                             break;
                     }
