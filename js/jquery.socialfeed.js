@@ -657,7 +657,7 @@ if (typeof Object.create !== 'function') {
             blogspot: {
                 loaded: false,
                 posts: [],
-                datatype: 'json',
+                datatype: 'jsonp',
                 getData: function(account) {
                     var url;
                     switch (account[0]) {
