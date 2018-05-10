@@ -36,7 +36,7 @@
     },
 
 	blogspot :{
-	      accounts: ['davidprasetyo.com'], //Array: Specifiy a list of rss feed from which to pull posts
+	      accounts: ['www.davidprasetyo.com'], //Array: Specifiy a list of rss feed from which to pull posts
 	      limit: 10                                     //Integer: max number of posts to load for each url
 		 },
             // GENERAL SETTINGS
